@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:local="clr-namespace:DataGridDemo"
+             x:Class="DataGridDemo.MainPage"
+             x:Name="page">
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <sfgrid:SfDataGrid x:Name="SampleDataGrid"
+                           AllowResizingColumn="True"
+                           AllowPullToRefresh="True"
+                           AllowSorting="True"
+                           AutoGenerateColumns="False"
+                           FrozenColumnsCount="2"
+                           GridTapped="SampleDataGrid_OnGridTapped"
+                           ItemsSource="{Binding Source={x:Reference page},
+                                                 Path=SampleTable}"
+                           SelectionMode="None"
+                           HeaderRowHeight="70"
+                           Margin="0"
+                           Padding="0"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand">
+
+            <sfgrid:SfDataGrid.Columns>
+
+                <!--The bug with wrong ColumnIndex is showing up when width of a frozen column is less than width of a not frozen one.-->
+                <sfgrid:GridTextColumn HeaderText="Column 1" MinimumWidth="80" MappingName="Column1" />
+                <sfgrid:GridTextColumn HeaderText="Column 2" MinimumWidth="80" MappingName="Column2" />
+                <sfgrid:GridTextColumn HeaderText="Column 3" MinimumWidth="100" MappingName="Column3" />
+                <sfgrid:GridTextColumn HeaderText="Column 4" MinimumWidth="100" MappingName="Column4" />
+                <sfgrid:GridTextColumn HeaderText="Column 5" MinimumWidth="100" MappingName="Column5" />
+                <sfgrid:GridTextColumn HeaderText="Column 6" MinimumWidth="100" MappingName="Column6" />
+                <sfgrid:GridTextColumn HeaderText="Column 7" MinimumWidth="100" MappingName="Column7" />
+
+            </sfgrid:SfDataGrid.Columns>
+        </sfgrid:SfDataGrid>
+
+    </Grid>
+</ContentPage>
